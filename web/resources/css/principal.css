@@ -1,0 +1,100 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #000000;
+    background: #FFFFFF;
+}
+.perfil{
+    color: #000;
+    background: transparent;
+    text-decoration:  #ff0303;
+    font-size: 14px;
+}
+.textoColorido{
+         
+    font-size: 18px;
+    size: 18px;
+        color:  #000;
+         
+    }
+    .textoColorido2{
+         
+    font-size: 18px;
+    size: 18px;
+        color: brown;
+         
+    }
+/* css sticky footer */
+/* http://css-tricks.com/snippets/css/sticky-footer/ */
+* {
+    margin:0;
+    padding:0;
+} 
+html, body, #wrapper {
+    height: 100%;
+}
+#principal{
+    margin: 0 8px 0 8px;
+}
+body > #wrapper {
+    height: auto; 
+    min-height: 100%;
+}
+
+#principal {
+    padding-bottom: 150px;
+}  /* must be same height as the footer */
+
+footer { 
+    position: relative;
+    margin-top: -150px; /* negative value of footer height */
+    height: 150px;
+    clear:both;
+    border-top: 1px solid #FFFFFF;
+    background-color: #FFFFFF; /* era whiteSmoke */
+    width:100%;
+}
+
+form[required], form[required=required], form .required {
+    font-weight: bold;
+}
+form input[required] label:after, form input[required=required] label:after, form label.required:after{
+    color: #e32;
+    content: '*';
+    display: inline;
+}
+input.highlight, select.highlight, textarea.highlight, inputFile.highlight {
+    background-color: #ffc;
+}
+#conteudo{
+    display: none;
+}
+.tabela_lista tbody tr:hover{
+    background-color: #dedede;
+}
+input, inputFile{
+    margin-right: 5px;
+}
+
+inputFile{
+    display: none;
+}
+
+a {
+    color:#32d26a;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #ff0909;
+    text-decoration: none;
+}
+.tabs-left > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus {
+    border-color: #ff0909 transparent #f00 #ff0303;
+}
+
+/*@media all and (min-width:1200px)*/
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 1280px;
+}

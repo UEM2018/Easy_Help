@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">    
+    <h:head>
+        <h:outputStylesheet name="reset.css" library="css" />
+        <h:outputStylesheet name="bootstrap.css" library="css" />
+        <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
+        <h:outputStylesheet name="jquery_tablesorter/themes/light_gray/style.css" library="js" />
+        <h:outputStylesheet name="principal.css" library="css" />
+        <h:outputScript name="jquery.min.js" library="js" />
+        <ui:insert name="css_adicional">
+            <style>
+                
+            .container{
+                width: 600px;
+            }
+            .h4left{
+                color:  #4ac94a;
+                padding-left: 100px;
+            }
+            </style>
+        </ui:insert>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content='author' name='Marcus-Jonatas'/>
+        <meta content='author' name='copyright'/>
+        
+    </h:head>
+    <h:body>
+        <div id='wrapper'>
+            <div class='clearfix' id='principal'>
+                <ui:insert name="navbar">
+                    
+                </ui:insert>
+                <div class='container'>
+                    <br />
+                    <br />
+                    <div id="conteudo">
+                        <ui:insert name="cabecalho">
+
+                        </ui:insert>
+                        <ui:insert name="conteudo">
+                            
+                        </ui:insert>
+                    </div>
+                </div>
+                <!--/conteudo-->
+                <!-- /div principal -->
+            </div>
+            <!-- /div wrapper -->
+        </div>
+        <ui:insert name="rodape">
+            <!-- RODAPÉ -->
+            <footer>
+                <div class='container'>
+                </div>
+            </footer>
+        </ui:insert>
+        <h:outputScript name="bootstrap.min.js" library="js" />
+        <h:outputScript name="jquery_tablesorter/jquery.tablesorter.min.js" library="js" />
+        <h:outputScript name="jquery_tablesorter/jquery.metadata.js" library="js" />
+        <h:outputScript name="jquery.maskedinput.min.js" library="js" />
+        <h:outputScript name="principal.js" library="js" />
+        <ui:insert name="js_adicional">
+        </ui:insert>
+    </h:body>
+</html>
+
