@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="/template/templateAdmin.html">
+        <ui:define name="conteudo">
+            <div class="container well">
+                <div>
+                    <h2>Jogo</h2>
+                </div>
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs" id="abas">
+                        <li class="active" id="aba_cadastro_jogo"><a href="#cadastro_jogo" data-toggle="tab"><i class="icon-plus"></i> Cadastrar Jogos</a></li>
+                        <li id="aba_listagem_jogo"><a href="#listagem_jogo" data-toggle="tab"><i class="icon-list-alt"></i> Listar Jogos</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="cadastro_jogo">
+                            <h:form id="form_cadastro_jogo" styleClass="form-horizontal">
+                                <fieldset>
+                                    <legend>Cadastro de Jogos</legend>
+                                    <h:inputHidden value="#{JogoController.jogo.idJogo}" id="idJogo" />
+                                    <div class="control-group">
+                                        <label class="control-label required" for="form_cadastro_jogo:nome">Nome: </label>
+                                        <div class="controls">
+                                            <h:inputText value="#{JogoController.jogo.nome}" id="nome" required="true" requiredMessage="Digite o nome" maxlength="40" /> <h:message for="nome" styleClass="alert alert-error" />
+                                        </div>
+                                    </div>                                    
+                                </fieldset>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <h:commandButton value="Limpar" type="reset" styleClass="btn"/>
+                                        <h:outputText value=" "/> 
+                                        <h:commandButton styleClass="btn" action="#{JogoController.salvar}" value="Salvar"/> 
+                                        <br /><br />
+                                        <h:message errorClass="error" for="form_cadastro_jogo" styleClass="alert alert-error" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                        <div class="tab-pane" id="listagem_jogo">
+                            <legend>Listagem de Jogos</legend>
+                            <div>
+                                <h:form id="form_lista_jogos">
+                                    <h:dataTable styleClass="table table-condensed tabela_lista tablesorter tabela_ordenada" value="#{JogoController.listar()}" var="jgo" columnClasses="span8,span1,span1">
+                                        
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nome"/>
+                                            </f:facet>
+                                            <h:outputText value="#{jgo.jogo.nome}" />
+                                        </h:column>                  
+                                        
+                                        <h:column headerClass="coluna_vazia">
+                                            <f:facet name="header">
+                                            </f:facet>
+                                            <h:commandLink styleClass="btn btn-small" action="#{JogoController.alterarDados(jgo.jogo)}" value="Editar">
+                                                <i class="icon-pencil icon-black"></i>
+                                            </h:commandLink>
+                                        </h:column>
+
+                                        <h:column headerClass="coluna_vazia">
+                                            <f:facet name="header">
+                                            </f:facet>
+                                            <h:commandLink styleClass="btn btn-danger btn-small" action="#{jgo.remover()}" value="Apagar">
+                                                <i class="icon-remove icon-white"></i>
+                                            </h:commandLink>
+                                        </h:column>
+
+                                    </h:dataTable>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+        <ui:define name="js_adicional">
+            <script>
+                function muda_aba(removeu){
+                    if(removeu != ""){
+                        $("#aba_cadastro_jogo").removeClass("active");
+                        $("#cadastro_jogo").removeClass("active");
+                        $("#aba_listagem_jogo").addClass("active");
+                        $("#listagem_jogo").addClass("active");
+                    }
+                }
+                $(document).ready(function () {
+                    muda_aba("#{param['removeu']}");
+                    add_atributo_form("form_cadastro_jogo", "nome", "placeholder", "Digite o nome");
+                });
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>

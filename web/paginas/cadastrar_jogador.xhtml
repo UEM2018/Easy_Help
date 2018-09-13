@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <ui:composition template="template/templateNoLogin.html">
+        <ui:define name="conteudo">
+            <div class="container well">
+                <h1>Seja Bem-vindo!</h1><br />
+                <h2>Cadastro de Jogador:</h2>
+                <!--<h:inputHidden value="#{JogadorController.jogador.idJogador}" id="idJogador" />-->
+                <h:form id="form_novo" styleClass="form-horizontal">
+                    <fieldset>
+                        <div class="control-group"> 
+                            <label class="control-label required" for="form_novo:email">Email: </label>
+                            <div class="controls">
+                                <h:inputText id="email" required="true" value="#{JogadorController.jogador.email}" autocomplete="false" requiredMessage="Digite seu email, para Log In" maxlength="60" /> <h:message for="email" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group"> 
+                            <label class="control-label required" for="form_novo:nome">Nome: </label>
+                            <div class="controls">
+                                <h:inputText id="nome" required="true" value="#{JogadorController.jogador.nome}" autocomplete="false" requiredMessage="Digite seu nome de jogador" maxlength="50" /> <h:message for="nome" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group"> 
+                            <label class="control-label required" for="form_novo:tel1">Telefone 1: </label>
+                            <div class="controls">
+                                <h:inputText id="tel1" required="true" value="#{JogadorController.jogador.tel1}" autocomplete="false" requiredMessage="Digite seu telefone" maxlength="17" /> <h:message for="tel1" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group"> 
+                            <label class="control-label" for="form_novo:tel2">Telefone 2: </label>
+                            <div class="controls">
+                                <h:inputText id="tel2" required="false" value="#{JogadorController.jogador.tel2}" autocomplete="false" requiredMessage="Digite outro telefone" maxlength="17" /> <h:message for="tel2" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group"> 
+                            <label class="control-label required" for="form_novo:cpf">CPF: </label>
+                            <div class="controls">
+                                <h:inputText id="cpf" required="true" value="#{JogadorController.jogador.cpf}" autocomplete="false" requiredMessage="Digite seu CPF" maxlength="14" /> <h:message for="cpf" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group"> 
+                            <label class="control-label required" for="form_novo:nacionalidade">Nacionalidade: </label>
+                            <div class="controls">
+                                <h:selectOneListbox value="#{JogadorController.jogador.nacionalidade}" id="nacionalidade" size="1" required="true" requiredMessage="Digite a nacionalidade"  > 
+                                    <f:selectItem itemValue = "Brasil" itemLabel = "Brasil" /> 
+                                    <f:selectItem itemValue = "China" itemLabel = "China" /> 
+                                    <f:selectItem itemValue = "Argentina" itemLabel = "Argentina" /> 
+                                </h:selectOneListbox>  <h:message for="tipo" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label required" for="form_novo:senha">Senha: </label>
+                            <div class="controls">
+                                <h:inputSecret value="#{JogadorController.jogador.senha}" id="senha" required="true" requiredMessage="Digite a senha" maxlength="25" >
+                                    <f:validator validatorId="passwordValidator" />
+                                    <f:attribute name="confirm" value="#{confirm}" />
+                                </h:inputSecret> <h:message for="senha" styleClass="alert alert-error" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label required" for="form_novo:confirm">Confirmar Senha: </label>
+                            <div class="controls">
+                                <h:inputSecret value="#{JogadorController.jogador.senha}" id="confirm" binding="#{confirm}" required="true" requiredMessage="Digite a senha" maxlength="25" >
+                                    <f:validator validatorId="passwordValidator" />
+                                    <f:attribute name="confirm" value="#{confirm}" />
+                                </h:inputSecret> <h:message for="confirm" styleClass="alert alert-error" />
+                            </div>
+                        </div> 
+                    </fieldset>
+                    <div class="control-group">
+                        <div class="controls">
+                            <h:commandButton id="botaoCadastrar" value="Salvar" action="#{JogadorController.salvar}" styleClass="btn"  actionListener="#{JogadorController.redireciona}"/>                            
+                            <br /><br />
+                            <h:message errorClass="error" for="form_novo" styleClass="alert alert-error" />
+                        </div>
+                    </div>
+                    <br />
+                </h:form>
+            </div>
+        </ui:define>
+        <ui:define name="js_adicional">
+            <script>
+                add_atributo_form("form_novo", "email", "placeholder", "Digite seu E-mail de Log In");
+                add_atributo_form("form_novo", "nome", "placeholder", "Digite seu Nome Completo");
+                add_atributo_form("form_novo", "tel1", "placeholder", "Digite um Telefone de contato");
+                add_atributo_form("form_novo", "tel2", "placeholder", "Digite outro Telefone de contato");
+                add_atributo_form("form_novo", "cpf", "placeholder", "Digite seu CPF");
+                add_atributo_form("form_novo", "nacionalidade", "placeholder", "Digite sua Nacionalidade");
+                add_atributo_form("form_novo", "formacao", "placeholder", "Digite sua Formação");
+                add_atributo_form("form_novo", "senha", "placeholder", "Digite a sua senha");
+                add_atributo_form("form_novo", "confirm", "placeholder", "Digite novamente a sua senha");
+                $(document).ready(function () {
+                    add_mascara_form("form_novo", "tel1", "+99 99 99999-9999"); //pais ddd numero
+                    add_mascara_form("form_novo", "tel2", "+99 99 99999-9999"); //pais ddd numero
+                    add_mascara_form("form_novo", "cpf", "999.999.999-99"); //cpf
+                });
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>
+

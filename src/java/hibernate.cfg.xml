@@ -49,6 +49,8 @@ Contributor(s):
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     <mapping class="modelo.Usuario"/>
+    <mapping class="modelo.Jogador"/>
+    <mapping class="modelo.Jogo"/>
     <mapping class="modelo.UsuarioProxy"/>
   </session-factory>
 </hibernate-configuration>

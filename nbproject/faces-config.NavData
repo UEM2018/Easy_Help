@@ -4,6 +4,8 @@
     <Scope Scope="Project">
         <Node id="index.xhtml" x="150" y="150" zoom="true"/>
         <Node id="JSF/usuario.xhtml" x="250" y="750" zoom="true"/>
+        <Node id="JSF/jogador.xhtml" x="250" y="750" zoom="true"/>
+        <Node id="JSF/jogo.xhtml" x="250" y="750" zoom="true"/>
         <Node id="faces/JSF/index.xhtml" x="650" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
